@@ -1,0 +1,22 @@
+{
+    "usuarios": [
+      { "id": 1, "nombre": "Kapsito", "correo": "kapsito@compensar.com" },
+      { "id": 2, "nombre": "Carlos Parra", "correo": "caliparra@ucompensar.edu.co" }
+    ],
+    "recursos": [
+      { "id": 101, "titulo": "Sobre Cypress", "autor": "Anonimo" },
+      { "id": 102, "titulo": "Bases de Datos", "autor": "Anonimo" }
+    ],
+    "prestamos": [
+      { "id": 1001, "usuarioId": 1, "recursoId": 101, "fecha": "2025-04-01T10:30:00Z" },
+      { "id": 1002, "usuarioId": 2, "recursoId": 102, "fecha": "2025-04-03T15:00:00Z" }
+    ],
+    "ejemplares": [
+      { "id": 201, "recursoId": 101, "codigoEjemplar": "JS001" },
+      { "id": 202, "recursoId": 102, "codigoEjemplar": "BD002" }
+    ],
+    "reportes": [
+      "Reporte de préstamos actualizado al 23/04/2025",
+      "Reporte de usuarios activos"
+    ]
+  }
