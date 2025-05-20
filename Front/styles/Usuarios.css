@@ -1,0 +1,252 @@
+/* Estilos generales */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Encabezado */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1a242b;
+  color: white;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+}
+
+header .logo img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+header .logo span {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+header .header-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+header .header-buttons button {
+  background-color: #1a242b;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+header .header-buttons button:hover {
+  background-color: #15425e;
+}
+
+
+/* Contenedor del formulario */
+.info-text{
+  padding: 20px;
+  text-align: center;
+  font-size: 24px;
+  color: #000000;
+}
+
+.form-container {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+label,
+input,
+button {
+  width: 90%;
+  margin-bottom: 15px;
+}
+
+input,
+button {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background-color: #3498db;
+  color: white;
+  cursor: pointer;
+  border: none;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+/* Estilos generales para las alertas */
+#resultado {
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  display: none; /* Inicialmente oculto */
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Alerta de éxito */
+#resultado.success {
+  background-color: #46b649;
+  color: white;
+  border-left: 5px solid #235e25;
+}
+
+/* Alerta de error */
+#resultado.error {
+  background-color: #d1534a;
+  color: white;
+  border-left: 5px solid #531b1b;
+}
+
+/* Estilo para el ícono de cierre */
+#resultado .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: color 0.3s;
+  align-items: end;
+}
+
+#resultado .close-btn:hover {
+  color: #000;
+}
+
+/* Pie de página */
+footer {
+  background-color: #15425e;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  margin-top: auto;
+}
+
+.subtitulo {
+  text-align: center;
+  font-size: 22px;
+  margin-top: 40px;
+  color: #333;
+}
+
+.tabla-container {
+  width: 90%;
+  max-width: 800px;
+  margin: 20px auto;
+  overflow-x: auto;
+}
+
+#tablaUsuarios {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#tablaUsuarios th,
+#tablaUsuarios td {
+  padding: 12px 15px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+#tablaUsuarios th {
+  background-color: #15425e;
+  color: white;
+}
+
+#tablaUsuarios tr:hover {
+  background-color: #f1f1f1;
+}
+
+#tablaUsuarios button {
+  padding: 6px 10px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#tablaUsuarios button:hover {
+  background-color: #c0392b;
+}
+
+/* Estilo para el mensaje (alerta) */
+#mensaje {
+  width: 90%;
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  display: none;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#mensaje.success {
+  background-color: #46b649;
+  color: white;
+  border-left: 5px solid #235e25;
+}
+
+#mensaje.error {
+  background-color: #d1534a;
+  color: white;
+  border-left: 5px solid #531b1b;
+}
+
+#mensaje .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+#mensaje .close-btn:hover {
+  color: #000;
+}

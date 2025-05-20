@@ -1,4 +1,4 @@
-const { crearUsuario, eliminarUsuario, obtenerUsuarios } = require('../src/usuarios/usuarios');
+const { crearUsuario, eliminarUsuario, obtenerUsuarios } = require('../Back/usuarios/usuarios');
 
 describe('Usuarios', () => {
   beforeEach(() => {

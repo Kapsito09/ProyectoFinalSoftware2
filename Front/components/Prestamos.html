@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Registrar Préstamo</title>
+  <link rel="stylesheet" href="../styles/Prestamos.css" />
+</head>
+<body>
+
+  <!-- Encabezado -->
+  <header>
+    <div class="logo">
+      <img src="imagenes/logo.png" alt="Logo Biblioteca" />
+      <span>BiblioGital</span>
+    </div>
+    <div class="header-buttons">
+      <button>Proximamente</button>
+      <button>Proximamente</button>
+      <button>Proximamente</button>
+    </div>
+  </header>
+
+  <h1 class="info-text">Registrar Préstamo</h1>
+
+  <div class="form-container">
+    <label for="usuarioId">ID de Usuario:</label>
+    <input type="number" id="usuarioId" placeholder="Ej: 1" />
+    
+    <label for="recursoId">ID de Recurso:</label>
+    <input type="number" id="recursoId" placeholder="Ej: 101" />
+
+    <button id="btnRegistrar">Registrar Préstamo</button>
+  </div>
+
+  <div id="resultado">
+    <button class="close-btn" onclick="cerrarAlerta()"></button>
+    <span id="resultado-text"></span>
+  </div>
+
+  <script>
+    const btn = document.getElementById('btnRegistrar');
+    const inputUsuarioId = document.getElementById('usuarioId');
+    const inputRecursoId = document.getElementById('recursoId');
+    const resultado = document.getElementById('resultado');
+    const resultadoText = document.getElementById('resultado-text');
+
+    btn.addEventListener('click', () => {
+      const usuarioId = inputUsuarioId.value.trim();
+      const recursoId = inputRecursoId.value.trim();
+
+      if (!usuarioId || !recursoId) {
+        resultadoText.textContent = 'Por favor ingresa un ID de usuario y un ID de recurso.';
+        resultado.className = 'error';
+        resultado.style.display = 'block';
+        return;
+      }
+
+      fetch('/prestamos', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ usuarioId: parseInt(usuarioId), recursoId: parseInt(recursoId) }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.error) {
+            resultadoText.textContent = 'Error: ' + data.error;
+            resultado.className = 'error';
+          } else {
+            resultadoText.textContent = 'Préstamo registrado con éxito! ID: ' + data.id;
+            resultado.className = 'success';
+          }
+          resultado.style.display = 'block';
+        })
+        .catch((err) => {
+          resultadoText.textContent = 'Error de conexión';
+          resultado.className = 'error';
+          resultado.style.display = 'block';
+        });
+    });
+
+    function cerrarAlerta() {
+      resultado.style.display = 'none';
+    }
+  </script>
+
+  <!-- Pie de página -->
+  <footer>
+    <p>&copy; 2025 Biblioteca Virtual | Todos los derechos reservados</p>
+  </footer>
+
+</body>
+</html>

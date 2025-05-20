@@ -1,4 +1,4 @@
-const { agregarRecurso } = require('../src/recursos/recursos');
+const { agregarRecurso } = require('../Back/recursos/recursos');
 describe('Recursos', () => {
   test('Agregar recurso válido', () => {
     const r = agregarRecurso('Eficiencia de las pruebas Automatizadas', 'Kapsito');

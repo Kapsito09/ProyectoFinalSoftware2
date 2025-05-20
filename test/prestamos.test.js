@@ -1,4 +1,4 @@
-const { registrarPrestamo } = require('../src/prestamos/prestamos');
+const { registrarPrestamo } = require('../Back/prestamos/prestamos');
 describe('Préstamos', () => {
   test('Registrar préstamo válido', () => {
     const p = registrarPrestamo(1, 101);

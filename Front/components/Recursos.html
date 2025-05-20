@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Agregar Recurso</title>
+  <link rel="stylesheet" href="../styles/Recursos.css" />
+</head>
+<body>
+
+  <!-- Encabezado -->
+  <header>
+    <div class="logo">
+      <img src="imagenes/logo.png" alt="Logo Biblioteca" />
+      <span>BiblioGital</span>
+    </div>
+    <div class="header-buttons">
+      <button>Proximamente</button>
+      <button>Proximamente</button>
+      <button>Proximamente</button>
+    </div>
+  </header>
+
+  <!-- Título -->
+  <h1 class="info-text">Agregar Recurso</h1>
+
+  <!-- Formulario -->
+  <div class="form-container">
+    <label for="titulo">Título:</label>
+    <input type="text" id="titulo" placeholder="Ej: Introducción a Node.js" />
+
+    <label for="autor">Autor:</label>
+    <input type="text" id="autor" placeholder="Ej: Juan Pérez" />
+
+    <button id="btnAgregar">Agregar Recurso</button>
+  </div>
+
+  <!-- Resultado -->
+  <div id="resultado" style="display: none;">
+    <button class="close-btn" onclick="cerrarAlerta()"></button>
+    <span id="resultado-text"></span>
+  </div>
+
+  <!-- Script -->
+  <script>
+    const btn = document.getElementById('btnAgregar');
+    const inputTitulo = document.getElementById('titulo');
+    const inputAutor = document.getElementById('autor');
+    const resultado = document.getElementById('resultado');
+    const resultadoText = document.getElementById('resultado-text');
+
+    btn.addEventListener('click', () => {
+  const titulo = inputTitulo.value.trim();
+  const autor = inputAutor.value.trim();
+
+  if (!titulo || !autor) {
+    resultadoText.textContent = 'Por favor ingresa un título y un autor.';
+    resultado.className = 'error';
+    resultado.style.display = 'block';
+    return;
+  }
+
+  fetch('/recursos', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ titulo, autor })
+  })
+  .then(res => res.json())
+  .then(data => {
+    resultado.style.display = 'block';
+    if (data.error) {
+      resultadoText.textContent = 'Error: ' + data.error;
+      resultado.className = 'error';
+    } else {
+      resultadoText.textContent = '✅ Recurso agregado: ' + data.titulo + ' por ' + data.autor;
+      resultado.className = 'success';
+      inputTitulo.value = '';
+      inputAutor.value = '';
+    }
+  })
+  .catch(() => {
+    resultadoText.textContent = 'Error de conexión';
+    resultado.className = 'error';
+    resultado.style.display = 'block';
+  });
+});
+
+
+    function cerrarAlerta() {
+      resultado.style.display = 'none';
+    }
+  </script>
+  <footer>
+    <p>&copy; 2025 Biblioteca Virtual | Todos los derechos reservados</p>
+  </footer>
+
+</body>
+</html>
